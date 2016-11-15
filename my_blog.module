@@ -5,3 +5,25 @@
  */
 
 include_once 'my_blog.features.inc';
+
+
+function my_blog_init() {
+    drupal_add_css(drupal_get_path('module', 'my_blog') . '/css/blog.css');
+}
+
+
+function my_blog_permission() {
+  return array(
+    'administer blog status' => array(
+      'title' => t('Administer blog status'),
+      'description' => t('Perform administration tasks for blog content.'),
+    ),
+  );
+}
+
+function my_blog_form_blog_node_form_alter(&$form, &$form_state, $form_id) {
+  unset($form['options']['#group']);
+  if(user_access('administer blog status')){
+    $form['options']['#access'] = TRUE;
+  }
+}
