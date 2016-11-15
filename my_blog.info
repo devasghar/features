@@ -1,0 +1,16 @@
+name = My Blog
+description = Blog settings for our production site
+core = 7.x
+package = Features
+dependencies[] = features
+dependencies[] = image
+dependencies[] = text
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[field_base][] = body
+features[field_base][] = field_blog_image
+features[field_instance][] = node-blog-body
+features[field_instance][] = node-blog-field_blog_image
+features[views_view][] = my_blog
+features_exclude[dependencies][ctools] = ctools
